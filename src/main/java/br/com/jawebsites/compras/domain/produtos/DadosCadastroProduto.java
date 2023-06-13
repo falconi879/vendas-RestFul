@@ -8,6 +8,7 @@ public record DadosCadastroProduto(
 		String codigo,
 		@NotBlank
 		String nome,
+		Long categoria,
 		@NotNull
 		Double preco,
 		String obs,

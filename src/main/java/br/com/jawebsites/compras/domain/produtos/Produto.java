@@ -3,10 +3,14 @@ package br.com.jawebsites.compras.domain.produtos;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import br.com.jawebsites.compras.domain.categorias.Categoria;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -19,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Produto implements Serializable {
+public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,11 +36,16 @@ public class Produto implements Serializable {
 	private LocalDate dataCadastro;
 	private Double preco;
 	private Boolean ativo;
-
-	public Produto(DadosCadastroProduto dados) {
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id")
+	private Categoria categoria;
+	
+	public Produto(DadosCadastroProduto dados, Categoria categoria) {
 		this.codigo = dados.codigo().toUpperCase();
 		this.preco = dados.preco();
 		this.nome = dados.nome().toUpperCase();
+		this.categoria = categoria;
 		this.medida = dados.medida().toUpperCase();
 		this.obs = dados.obs().toUpperCase();
 		this.ativo = true;

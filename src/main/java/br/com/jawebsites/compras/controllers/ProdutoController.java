@@ -20,6 +20,7 @@ import br.com.jawebsites.compras.domain.produtos.DadosCadastroProduto;
 import br.com.jawebsites.compras.domain.produtos.DadosDetalhamentoProduto;
 import br.com.jawebsites.compras.domain.produtos.DadosListagemProduto;
 import br.com.jawebsites.compras.domain.produtos.Produto;
+import br.com.jawebsites.compras.repositories.CategoriaRepository;
 import br.com.jawebsites.compras.repositories.ProdutoRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -30,12 +31,18 @@ public class ProdutoController {
 
 	@Autowired
 	private ProdutoRepository repository;
+	@Autowired
+	private CategoriaRepository categoriarepository;
 
 	@PostMapping
 	@Transactional
 	public ResponseEntity<DadosDetalhamentoProduto> cadastrar(@RequestBody @Valid DadosCadastroProduto dados,
 			UriComponentsBuilder uriBuilder) {
-		var produto = new Produto(dados);
+		var categoria = categoriarepository.getReferenceById(dados.categoria());
+		System.out.println(categoria);
+		var produto = new Produto(dados,categoria);
+		
+		System.out.println(produto);
 		repository.save(produto);
 
 		var uri = uriBuilder.path("/produtos/{id}").buildAndExpand(produto.getId()).toUri();
