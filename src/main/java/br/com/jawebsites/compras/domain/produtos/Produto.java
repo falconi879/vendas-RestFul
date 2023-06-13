@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import br.com.jawebsites.compras.domain.categorias.Categoria;
+import br.com.jawebsites.compras.domain.categorias.DadosDetalhamentoCategoria;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -52,7 +53,7 @@ public class Produto implements Serializable{
 		this.dataCadastro = LocalDate.now();
 	}
 
-	public void atualizarInformacoes(DadosAtualizacaoProduto dados) {
+	public void atualizarInformacoes(DadosAtualizacaoProduto dados, Categoria categoria) {
 		if (dados.codigo() != null) {
 			this.codigo = dados.codigo().toUpperCase();
 		}
@@ -61,6 +62,9 @@ public class Produto implements Serializable{
 		}
 		if (dados.nome() != null) {
 			this.nome = dados.nome().toUpperCase();
+		}
+		if(dados.categoria()!=null) {
+			this.categoria = categoria;
 		}
 		if (dados.medida() != null) {
 			this.medida = dados.medida().toUpperCase();

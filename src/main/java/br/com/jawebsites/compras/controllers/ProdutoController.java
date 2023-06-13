@@ -39,10 +39,8 @@ public class ProdutoController {
 	public ResponseEntity<DadosDetalhamentoProduto> cadastrar(@RequestBody @Valid DadosCadastroProduto dados,
 			UriComponentsBuilder uriBuilder) {
 		var categoria = categoriarepository.getReferenceById(dados.categoria());
-		System.out.println(categoria);
 		var produto = new Produto(dados,categoria);
 		
-		System.out.println(produto);
 		repository.save(produto);
 
 		var uri = uriBuilder.path("/produtos/{id}").buildAndExpand(produto.getId()).toUri();
@@ -67,8 +65,10 @@ public class ProdutoController {
 	@PutMapping
 	@Transactional
 	public ResponseEntity<DadosDetalhamentoProduto> atualizar(@RequestBody @Valid DadosAtualizacaoProduto dados) {
+		var categoria = categoriarepository.getReferenceById(dados.categoria());
 		var produto = repository.getReferenceById(dados.id());
-		produto.atualizarInformacoes(dados);
+		
+		produto.atualizarInformacoes(dados,categoria);
 
 		return ResponseEntity.ok(new DadosDetalhamentoProduto(produto));
 	}

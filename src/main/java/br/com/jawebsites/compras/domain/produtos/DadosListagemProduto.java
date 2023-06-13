@@ -1,7 +1,9 @@
 package br.com.jawebsites.compras.domain.produtos;
 
-public record DadosListagemProduto(Long id, String codigo, String nome, Double preco, String medida, String obs) {
+import br.com.jawebsites.compras.domain.categorias.DadosDetalhamentoCategoria;
+
+public record DadosListagemProduto(Long id, String codigo, String nome, DadosDetalhamentoCategoria categoria,Double preco, String medida, String obs) {
 	public DadosListagemProduto(Produto produto) {
-		this(produto.getId(), produto.getCodigo(), produto.getNome(), produto.getPreco(), produto.getMedida(), produto.getObs());
+		this(produto.getId(), produto.getCodigo(), produto.getNome(), new DadosDetalhamentoCategoria(produto.getCategoria()), produto.getPreco(), produto.getMedida(), produto.getObs());
 	}
 }
