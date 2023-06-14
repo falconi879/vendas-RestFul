@@ -21,3 +21,19 @@ fazendo projeto com estudos na Alura e Dio  com uso de Spring Boot
 # Deleção lógica - Não exclui o produto, somente altera o status do produto (DELETE)
 ![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/f2730e3a-f116-4282-9df0-3f96ed94625d)
 
+# Cadastro do Cliente (POST)
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/b3100b3a-7706-47dd-99d9-16f8c63711e5)
+
+# Buscando o Cliente por ID (GET) mostrando alguns campos
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/d4912c1d-e447-4ed9-9e4a-2f826e6dd637)
+
+# Listando os Clientes que estiverem ativo no Banco de Dados (GET)
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/2851eede-ae0a-436b-836b-ef82115a20fd)
+
+# Alteração de cadastro de Cliente (PUT) alguns campos podendo ser alterado
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/4db33cf3-8cdd-4b49-bcbc-4efd3c2382cb)
+
+# Deleção lógica - Não exclui o Cliente, somente altera o status para false (DELETE)
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/aca61707-c9b5-47a9-be57-e7bea798de25)
+
+
