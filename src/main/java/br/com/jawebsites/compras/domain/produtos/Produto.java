@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import br.com.jawebsites.compras.domain.categorias.Categoria;
-import br.com.jawebsites.compras.domain.categorias.DadosDetalhamentoCategoria;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
