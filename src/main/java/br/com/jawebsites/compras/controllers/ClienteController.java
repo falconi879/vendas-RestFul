@@ -16,54 +16,53 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.jawebsites.compras.domain.clientes.CadastrarCliente;
-import br.com.jawebsites.compras.domain.clientes.Cliente;
 import br.com.jawebsites.compras.domain.clientes.DadosAtualizacaoCliente;
 import br.com.jawebsites.compras.domain.clientes.DadosCliente;
 import br.com.jawebsites.compras.domain.clientes.DadosDetalhamentoCliente;
-import br.com.jawebsites.compras.repositories.ClienteRepository;
+import br.com.jawebsites.compras.services.ClienteService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("clientes")
 public class ClienteController {
+
 	@Autowired
-	private ClienteRepository repository;
-		
+	private ClienteService service;
+
 	@PostMapping
 	@Transactional
 	public ResponseEntity<DadosCliente> cadastrar(@RequestBody @Valid CadastrarCliente dados,
-			UriComponentsBuilder uriBuilder){
-		var cliente =new Cliente(dados);
-		repository.save(cliente);
-		var uri = uriBuilder.path("/clientes/{id}").buildAndExpand(cliente.getId()).toUri();
-		return ResponseEntity.created(uri).body(new DadosCliente(cliente));
+			UriComponentsBuilder uriBuilder) {
+		var cliente = service.cadastrarCliente(dados);
+		var uri = uriBuilder.path("/clientes/{id}").buildAndExpand(cliente.id()).toUri();
+		return ResponseEntity.created(uri).body(cliente);
 	}
+
 	@GetMapping
 	public ResponseEntity<Page<DadosCliente>> listar(
 			@PageableDefault(size = 10, sort = { "nome" }) Pageable paginacao) {
-		var page = repository.findAllByAtivoTrue(paginacao).map(DadosCliente::new);
+		var page = service.listarCliente(paginacao);
 		return ResponseEntity.ok(page);
 	}
+
 	@GetMapping("/{id}")
 	public ResponseEntity<DadosDetalhamentoCliente> detalhar(@PathVariable Long id) {
-		var cliente = repository.getReferenceById(id);
-		return ResponseEntity.ok(new DadosDetalhamentoCliente(cliente));
+		var cliente = service.detalharClienteId(id);
+		return ResponseEntity.ok(cliente);
 	}
+
 	@PutMapping
 	@Transactional
 	public ResponseEntity<DadosCliente> atualizar(@RequestBody DadosAtualizacaoCliente dados) {
-		var cliente = repository.getReferenceById(dados.id());
-		
-		cliente.atualizarInformacoes(dados);
-
-		return ResponseEntity.ok(new DadosCliente(cliente));
+		var cliente = service.atualizarCliente(dados);
+		return ResponseEntity.ok(cliente);
 	}
+
 	@DeleteMapping("/{id}")
-    @Transactional
-    public ResponseEntity<DadosCliente> excluir(@PathVariable Long id) {
-        var cliente = repository.getReferenceById(id);
-        cliente.excluir();
-        return ResponseEntity.noContent().build();
-    }
+	@Transactional
+	public ResponseEntity<DadosCliente> excluir(@PathVariable Long id) {
+		service.desativaCliente(id);
+		return ResponseEntity.noContent().build();
+	}
 }
