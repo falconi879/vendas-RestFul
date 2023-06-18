@@ -1,6 +1,10 @@
 # vendas-RestFul
 fazendo projeto com estudos na Alura e Dio  com uso de Spring Boot
 
+objetivo do projeto final com algumas melhorias! 
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/37262dc9-04d7-43e5-941f-e7b744641d67)
+
+
 # Objeto Categoria 
 ![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/3f3262cf-d174-4b15-904b-4e40a3b1712c)
 
