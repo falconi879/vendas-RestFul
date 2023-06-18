@@ -1,4 +1,4 @@
-# vendas-RestFul
+# vendas-RestFull
 fazendo projeto com estudos na Alura, Dio e Nelio Alves - com uso de Spring Boot
 
 objetivo do projeto final com algumas melhorias! 
