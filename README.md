@@ -26,7 +26,7 @@ objetivo do projeto final com algumas melhorias!
 ![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/f2730e3a-f116-4282-9df0-3f96ed94625d)
 
 # Cadastro do Cliente (POST)
-![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/b3100b3a-7706-47dd-99d9-16f8c63711e5)
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/5cabf4d3-622c-45ea-a9f1-5ca2a6d9c850)
 
 # Buscando o Cliente por ID (GET) mostrando alguns campos
 ![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/d4912c1d-e447-4ed9-9e4a-2f826e6dd637)
