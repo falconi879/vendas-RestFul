@@ -32,7 +32,8 @@ objetivo do projeto final com algumas melhorias!
 ![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/d4912c1d-e447-4ed9-9e4a-2f826e6dd637)
 
 # Listando os Clientes que estiverem ativo no Banco de Dados (GET)
-![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/2851eede-ae0a-436b-836b-ef82115a20fd)
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/de6b8a0e-ac7c-4888-bfe9-9eb964a4fbbc)
+
 
 # Alteração de cadastro de Cliente (PUT) alguns campos podendo ser alterado
 ![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/4db33cf3-8cdd-4b49-bcbc-4efd3c2382cb)
