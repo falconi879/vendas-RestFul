@@ -2,8 +2,12 @@ package br.com.jawebsites.compras.domain.clientes;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import br.com.jawebsites.compras.domain.endereco.Endereco;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,8 +20,10 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -32,26 +38,38 @@ public class Cliente implements Serializable {
 	private String nome;
 	private String email;
 	private String apelido;
-	private String cpf;
+	private String cpfCnpj;
 	private LocalDate nascimento;
 	private Boolean ativo;
 
+	
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 
+	@Enumerated(EnumType.STRING)
+	private TipoCliente tipoCliente;
+	
 	@Embedded
 	private Endereco endereco;
+	@ElementCollection
+	@CollectionTable(name="TELEFONE")
+	private Set<String> telefones= new HashSet<>();
+	
 
 	public Cliente(CadastrarCliente dados) {
 		this.nome = dados.nome();
 		this.email = dados.email();
 		this.apelido = dados.apelido();
-		this.cpf = dados.cpf();
+		this.cpfCnpj = dados.cpf();
 		this.nascimento = dados.nascimento();
 		this.ativo = true;
+		this.telefones = dados.telefone();
 		this.genero = dados.genero();
+		this.tipoCliente = dados.tipoCliente();
 		this.endereco = new Endereco(dados.endereco());
+		
 	}
+
 
 	public void atualizarInformacoes(DadosAtualizacaoCliente dados) {
 		if(dados.nome()!=null) {

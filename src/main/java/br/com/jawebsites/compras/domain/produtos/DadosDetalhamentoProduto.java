@@ -3,6 +3,7 @@ package br.com.jawebsites.compras.domain.produtos;
 import java.time.LocalDate;
 
 import br.com.jawebsites.compras.domain.categorias.DadosDetalhamentoCategoria;
+import br.com.jawebsites.compras.domain.clientes.TipoCliente;
 
 public record DadosDetalhamentoProduto(Long id, String codigo, String nome,
 		DadosDetalhamentoCategoria categoria,String obs, String medida,
