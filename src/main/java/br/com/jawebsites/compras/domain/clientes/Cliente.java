@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import br.com.jawebsites.compras.domain.endereco.Endereco;
+import br.com.jawebsites.compras.enuns.Genero;
+import br.com.jawebsites.compras.enuns.TipoCliente;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
@@ -42,19 +44,17 @@ public class Cliente implements Serializable {
 	private LocalDate nascimento;
 	private Boolean ativo;
 
-	
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 
 	@Enumerated(EnumType.STRING)
 	private TipoCliente tipoCliente;
-	
+
 	@Embedded
 	private Endereco endereco;
 	@ElementCollection
-	@CollectionTable(name="TELEFONE")
-	private Set<String> telefones= new HashSet<>();
-	
+	@CollectionTable(name = "TELEFONE")
+	private Set<String> telefones = new HashSet<>();
 
 	public Cliente(CadastrarCliente dados) {
 		this.nome = dados.nome();
@@ -67,27 +67,26 @@ public class Cliente implements Serializable {
 		this.genero = dados.genero();
 		this.tipoCliente = dados.tipoCliente();
 		this.endereco = new Endereco(dados.endereco());
-		
+
 	}
 
-
 	public void atualizarInformacoes(DadosAtualizacaoCliente dados) {
-		if(dados.nome()!=null) {
+		if (dados.nome() != null) {
 			this.nome = dados.nome();
 		}
-		if(dados.email()!=null) {
+		if (dados.email() != null) {
 			this.email = dados.email();
 		}
-		if(dados.apelido()!=null) {
+		if (dados.apelido() != null) {
 			this.apelido = dados.apelido();
 		}
-		if(dados.endereco()!=null) {
+		if (dados.endereco() != null) {
 			this.endereco.atualizarInformacoes(dados.endereco());
 		}
 	}
 
 	public void excluir() {
 
-		this.ativo=false;
+		this.ativo = false;
 	}
 }

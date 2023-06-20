@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import br.com.jawebsites.compras.domain.endereco.CadastroEndereco;
+import br.com.jawebsites.compras.enuns.Genero;
+import br.com.jawebsites.compras.enuns.TipoCliente;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

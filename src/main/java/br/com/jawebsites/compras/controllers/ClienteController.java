@@ -41,7 +41,7 @@ public class ClienteController {
 
 	@GetMapping
 	public ResponseEntity<Page<DadosCliente>> listar(
-			@PageableDefault(size = 10, sort = { "nome" }) Pageable paginacao) {
+			@PageableDefault(size = 25, sort = { "id" }) Pageable paginacao) {
 		var page = service.listarCliente(paginacao);
 		return ResponseEntity.ok(page);
 	}

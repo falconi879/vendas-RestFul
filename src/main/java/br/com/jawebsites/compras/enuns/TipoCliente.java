@@ -1,4 +1,4 @@
-package br.com.jawebsites.compras.domain.clientes;
+package br.com.jawebsites.compras.enuns;
 
 public enum TipoCliente {
 	PESSOAFISICA,

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import br.com.jawebsites.compras.domain.endereco.DadosEndereco;
+import br.com.jawebsites.compras.enuns.Genero;
+import br.com.jawebsites.compras.enuns.TipoCliente;
 
 public record DadosCliente(Long id,String nome,String email,String apelido,String cpf,LocalDate nascimento,
 		Boolean ativo, Genero genero,TipoCliente tipoCliente,DadosEndereco endereco, Set<String> telefone) {
