@@ -42,5 +42,13 @@ public class Pedido implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pagamento_id")
 	private Pagamento pagamento;
-
+	
+	public Pedido(CadastrarPedido dados, Cliente cliente) {
+		
+		this.dataAbertura  = LocalDateTime.now();
+		this.obs = dados.obs();
+		this.cliente = cliente;
+	
+	}
+	
 }
