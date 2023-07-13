@@ -41,4 +41,8 @@ objetivo do projeto final com algumas melhorias!
 # Deleção lógica - Não exclui o Cliente, somente altera o status para false (DELETE)
 ![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/aca61707-c9b5-47a9-be57-e7bea798de25)
 
+# Cadastro do Pedido (POST)
+![image](https://github.com/falconi879/vendas-RestFul/assets/40277543/1a49e1f7-692a-4d43-b6fb-62397461b271)
+
+
 
